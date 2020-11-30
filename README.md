@@ -1,3 +1,3 @@
 ### Simplilearn
 
-### Follow the readme instruction from frontend and api folder
+### Frontend and api folder contains readme respectively. 
