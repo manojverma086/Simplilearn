@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "rest api for login and signup",
+  "main": "server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "serve": "nodemon src/server.js",
+    "test": "mocha 'src/test/**/*.js' --recursive --timeout 12000 --exit"
+  },
+  "author": "manoj verma",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "concurrently": "^5.3.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^8.2.1",
+    "mockgoose": "^8.0.4",
+    "mongoose": "^5.10.17",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "supertest": "^6.0.1",
+    "validator": "^13.1.17"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
