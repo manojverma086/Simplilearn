@@ -1,22 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { setUserSession } from "../common/utils";
-
-const useFormInput = (initialValue) => {
-  const [value, setValue] = useState(initialValue);
-
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
-  return {
-    value,
-    onChange: handleChange,
-  };
-};
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function Login(props) {
-  const email = useFormInput("");
-  const password = useFormInput("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -26,8 +15,8 @@ function Login(props) {
     setLoading(true);
     axios
       .post("http://localhost:5000/api/users/login", {
-        email: email.value,
-        password: password.value,
+        email: email,
+        password: password,
       })
       .then((response) => {
         setLoading(false);
@@ -47,22 +36,22 @@ function Login(props) {
       <div className="card">
         <h2>Login</h2>
         <div className="form-control">
-          <label for="email">Email </label>
+          <label htmlFor="email">Email </label>
           <input
             type="text"
             name="email"
-            value={email.value}
-            onChange={email.setValue}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter email"
           />
         </div>
         <div className="form-control">
-          <label for="password">Password </label>
+          <label htmlFor="password">Password </label>
           <input
             type="password"
             name="password"
-            value={password.value}
-            onChange={password.setValue}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Enter password"
           />
         </div>
@@ -73,15 +62,11 @@ function Login(props) {
           </>
         )}
         <br />
-        <button
-          type="button"
-          value={loading ? "Loading..." : "Login"}
-          onClick={handleLogin}
-          disabled={loading}
-        >
+        <button type="button" onClick={handleLogin} disabled={loading}>
           Login
         </button>
         <br />
+        Don't have account? <Link to="/register">Register</Link>
       </div>
     </div>
   );
